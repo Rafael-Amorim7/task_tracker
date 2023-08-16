@@ -3,19 +3,8 @@
 
         <StopWatch :time-in-seconds="timeInSeconds" />
 
-        <button class="button" @click="init()" :disabled="timerOn">
-            <span class="icon">
-                <i class="fas fa-play"></i>
-            </span>
-            <span>play</span>
-        </button>
-
-        <button class="button" @click="final()" :disabled="!timerOn">
-            <span class="icon">
-                <i class="fas fa-stop"></i>
-            </span>
-            <span>stop</span>
-        </button>
+        <Button @clicked="init" icon="fas fa-play" text="Start" :timerOn="timerOn" />
+        <Button @clicked="final" icon="fas fa-stop" text="Stop" :timerOn="!timerOn" />
 
     </div>
 </template>
@@ -23,11 +12,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import StopWatch from './StopWatch.vue'
+import Button from './Button.vue'
 
 export default defineComponent({
     name: 'TimerForm',
     components: {
-        StopWatch
+        StopWatch,
+        Button,
     },
     emits: ['timerEnds'],
     data() {
