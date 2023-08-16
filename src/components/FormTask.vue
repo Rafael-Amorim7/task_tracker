@@ -7,25 +7,7 @@
 
             </div>
             <div class="column">
-                <div class="is-flex is-align-items-center is-justify-content-space-between">
-
-                    <StopWatch :timeInSeconds="timeInSeconds"/>
-
-                    <button class="button" @click="init()">
-                        <span class="icon">
-                            <i class="fas fa-play"></i>
-                        </span>
-                        <span>play</span>
-                    </button>
-                    
-                    <button class="button" @click="final()">
-                        <span class="icon">
-                            <i class="fas fa-stop"></i>
-                        </span>
-                        <span>stop</span>
-                    </button>
-
-                </div>
+                <Timer />
             </div>
         </div>
     </div>
@@ -33,28 +15,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import StopWatch from './StopWatch.vue'
+import Timer from './Timer.vue'
 
 export default defineComponent({
     name: 'FormTask',
     components: {
-        StopWatch
+        Timer
     },
-    data() {
-        return {
-            timeInSeconds: 0,
-            cronometro: 0
-        }
-    },
-    methods: {
-        init() {
-            this.cronometro = setInterval(() => {
-                this.timeInSeconds += 1;
-            }, 1000);
-        },
-        final() {
-            clearInterval(this.cronometro)
-        }
-    }
-})
+});
 </script>
