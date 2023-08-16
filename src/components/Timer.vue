@@ -1,7 +1,7 @@
 <template>
     <div class="is-flex is-align-items-center is-justify-content-space-between">
 
-        <StopWatch :timeInSeconds="timeInSeconds" />
+        <StopWatch :time-in-seconds="timeInSeconds" />
 
         <button class="button" @click="init()" :disabled="timerOn">
             <span class="icon">
@@ -25,10 +25,11 @@ import { defineComponent } from 'vue';
 import StopWatch from './StopWatch.vue'
 
 export default defineComponent({
-    name: 'FormTask',
+    name: 'TimerForm',
     components: {
         StopWatch
     },
+    emits: ['timerEnds'],
     data() {
         return {
             timeInSeconds: 0,
@@ -46,6 +47,8 @@ export default defineComponent({
         final() {
             this.timerOn = false;
             clearInterval(this.timer)
+            this.$emit('timerEnds', this.timeInSeconds);
+            this.timeInSeconds = 0;
         }
     }
 })

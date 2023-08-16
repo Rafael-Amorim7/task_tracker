@@ -3,11 +3,16 @@
         <div class="columns">
             <div class="column is-8" role="form" aria-label="Form to create new task">
 
-                <input type="text" class="input" placeholder="What task will you start?">
+                <input
+                    type="text"
+                    class="input"
+                    placeholder="What task will you start?"
+                    v-model="description"
+                    />
 
             </div>
             <div class="column">
-                <Timer />
+                <Timer @timer-ends="finalizeTask"/>
             </div>
         </div>
     </div>
@@ -22,5 +27,16 @@ export default defineComponent({
     components: {
         Timer
     },
+    data() {
+        return {
+            description: '',
+        }
+    },
+    methods: {
+        finalizeTask(elapsedTime: number) : void {
+            console.log(elapsedTime)
+            console.log(this.description)
+        }
+    }
 });
 </script>
