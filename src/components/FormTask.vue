@@ -9,17 +9,17 @@
             <div class="column">
                 <div class="is-flex is-align-items-center is-justify-content-space-between">
                     <section>
-                        <strong>00:00:00</strong>
+                        <strong>{{ elapsedTime }}</strong>
                     </section>
 
-                    <button class="button">
+                    <button class="button" @click="init()">
                         <span class="icon">
                             <i class="fas fa-play"></i>
                         </span>
                         <span>play</span>
                     </button>
                     
-                    <button class="button">
+                    <button class="button" @click="final()">
                         <span class="icon">
                             <i class="fas fa-stop"></i>
                         </span>
@@ -36,6 +36,27 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'FormTask'
+    name: 'FormTask',
+    data() {
+        return {
+            timeInSeconds: 0,
+            cronometro: 0
+        }
+    },
+    computed: {
+        elapsedTime() : string {
+            return new Date(this.timeInSeconds * 1000).toISOString().substr(11, 8);
+        }
+    },
+    methods: {
+        init() {
+            this.cronometro = setInterval(() => {
+                this.timeInSeconds += 1;
+            }, 1000);
+        },
+        final() {
+            clearInterval(this.cronometro)
+        }
+    }
 })
 </script>
