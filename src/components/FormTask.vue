@@ -43,3 +43,9 @@ export default defineComponent({
     }
 });
 </script>
+
+<style>
+.formulario {
+    background-color: var(--bg-color);
+}
+</style>
