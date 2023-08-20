@@ -1,7 +1,7 @@
 <template>
-    <main class="columns is-gapless is-multiline dark-mode ">
+    <main class="columns is-gapless is-multiline" :class="{ 'dark-mode': darkMode }">
         <div class="column is-one-quarter">
-            <SideBar/>
+            <SideBar @change-theme="changeTheme" />
         </div>
         <div class="column is-three-quarter content">
             <FormTask @save-task="saveTask" />
@@ -39,11 +39,15 @@ export default defineComponent({
     data() {
         return {
             tasks: [] as ITask[],
+            darkMode: true,
         }
     },
     methods: {
         saveTask(task : ITask) {
             this.tasks.push(task);
+        },
+        changeTheme(darkMode : boolean) {
+            this.darkMode = darkMode
         },
     }
 });
