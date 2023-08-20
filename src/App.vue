@@ -6,7 +6,7 @@
         <div class="column is-three-quarter">
             <FormTask @save-task="saveTask" />
             <div class="list">
-                <Task v-for="( task, index ) in tasks" :key="index" />
+                <Task v-for="( task, index ) in tasks" :key="index" :task="task" />
             </div>
         </div>
     </main>
