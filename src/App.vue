@@ -4,11 +4,9 @@
             <SideBar/>
         </div>
         <div class="column is-three-quarter">
-            <FormTask/>
+            <FormTask @save-task="saveTask" />
             <div class="list">
-                <Task />
-                <Task />
-                <Task />
+                <Task v-for="( task, index ) in tasks" :key="index" />
             </div>
         </div>
     </main>
@@ -19,6 +17,7 @@ import { defineComponent } from 'vue';
 import SideBar from './components/SideBar.vue';
 import FormTask from './components/FormTask.vue';
 import Task from './components/Task.vue';
+import ITask from './interface/ITask';
 
 export default defineComponent({
     name: 'App',
@@ -26,6 +25,16 @@ export default defineComponent({
         SideBar,
         FormTask,
         Task,
+    },
+    data() {
+        return {
+            tasks: [] as ITask[],
+        }
+    },
+    methods: {
+        saveTask(task : ITask) {
+            this.tasks.push(task);
+        },
     }
 });
 </script>

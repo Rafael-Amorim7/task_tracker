@@ -27,6 +27,7 @@ export default defineComponent({
     components: {
         Timer
     },
+    emits: ['saveTask'],
     data() {
         return {
             description: '',
@@ -34,8 +35,10 @@ export default defineComponent({
     },
     methods: {
         finalizeTask(elapsedTime: number) : void {
-            console.log(elapsedTime)
-            console.log(this.description)
+            this.$emit('saveTask', {
+                timeInSeconds: elapsedTime,
+                description: this.description,
+            });
         }
     }
 });
