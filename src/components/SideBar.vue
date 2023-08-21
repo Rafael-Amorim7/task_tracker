@@ -1,14 +1,18 @@
 <template>
-    <header>
-        <div class="is-flex is-align-items-center is-justify-content-center">
-            <h1>
-                <img src="../assets/logo.png" alt="">
-            </h1>
-        </div>
-        <button class="button" @click="changeTheme">
-            {{ textButton }}
-        </button>
-    </header>
+    <div class="side-bar">
+        <header>
+            <div class="is-flex is-align-items-center is-justify-content-center">
+                <h1>
+                    <img src="../assets/logo.png" alt="">
+                </h1>
+            </div>
+        </header>
+        <footer>
+            <button class="button" @click="changeTheme">
+                {{ textButton }}
+            </button>
+        </footer>
+    </div>
 </template>
 
 <script lang="ts">
@@ -39,16 +43,27 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+div.side-bar {
+    background: #0d3b66;
+}
+
 header {
     padding: 1rem;
-    background: #0d3b66;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
+    text-align: center;
+}
+
+footer {
+    padding: 1rem;
+    width: 100%;
+    height: 20vh;
     text-align: center;
 }
 
 @media only screen and (max-width: 768px) {
-    header {
+    header, footer {
         padding: 2.5rem;
         height: auto;
     }
