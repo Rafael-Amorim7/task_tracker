@@ -8,7 +8,7 @@
             <div class="list">
                 <Task v-for="( task, index ) in tasks" :key="index" :task="task" />
                 <Box v-if="isTasksEmpty">
-                    <center>Empty tasks :( </center>
+                    Empty tasks :( 
                 </Box>
             </div>
         </div>

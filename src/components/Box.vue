@@ -19,5 +19,6 @@ export default defineComponent({
     width: 95%;
     margin: auto;
     box-shadow: 5px 5px 10px rgba(1, 1, 1, .5);
+    text-align: center;
 }
 </style>
