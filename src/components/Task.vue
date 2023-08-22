@@ -1,12 +1,17 @@
 <template>
     <Box>
         <div class="columns">
-            <div class="column is-7">
+            <div class="column is-9">
                 {{ task.description || 'Task' }}
             </div>
 
-            <div class="column">
+            <div class="column is-2">
                 <StopWatch :time-in-seconds="task.timeInSeconds" />
+            </div>
+            <div class="column is-1">
+                <button class="remove" @click="removeTask(index)">
+                    <i class="fa fa-remove"></i>
+                </button>
             </div>
         </div>
     </Box>
@@ -24,11 +29,33 @@ export default defineComponent({
         StopWatch,
         Box,
     },
+    emits: ['removeTask'],
     props: {
         task: {
             type: Object as PropType<ITask>,
             required: true,
         },
+        index: {
+            type: Number,
+            required: true,
+        }
     },
+    methods: {
+        removeTask(index : number) {
+            this.$emit('removeTask', index);
+        }
+    }
 });
 </script>
+
+<style>
+.remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.remove i {
+    font-size: 1.6rem;
+    color: red;
+}
+</style>

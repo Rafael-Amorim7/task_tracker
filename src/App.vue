@@ -6,7 +6,7 @@
         <div class="column is-three-quarter content">
             <FormTask @save-task="saveTask" />
             <div class="list">
-                <Task v-for="( task, index ) in tasks" :key="index" :task="task" />
+                <Task v-for="( task, index ) in tasks" :key="index" :task="task" :index="index" @remove-task="removeTask" />
                 <Box v-if="isTasksEmpty">
                     Empty tasks :( 
                 </Box>
@@ -52,6 +52,12 @@ export default defineComponent({
         changeTheme(darkMode : boolean) {
             this.darkMode = darkMode
         },
+        removeTask(index : number) {
+            if (index >= 0 && index < this.tasks.length) {
+                this.tasks.splice(index, 1);
+            }
+
+        }
     }
 });
 </script>
