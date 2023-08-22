@@ -18,6 +18,7 @@ export default defineComponent({
     color: var(--font-color);
     width: 95%;
     margin: auto;
+    margin-bottom: 1.2rem;
     box-shadow: 5px 5px 10px rgba(1, 1, 1, .5);
     text-align: center;
 }

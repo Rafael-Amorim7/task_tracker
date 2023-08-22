@@ -8,13 +8,15 @@
             </div>
         </header>
         <footer>
-            <button class="trash">
-                <i class="fa-solid fa-trash-can"></i>
-            </button>
 
             <button type="button" class="btn btn-outline-light" @click="changeTheme">
                 {{ textButton }}
             </button>
+
+            <button class="trash" @click="clearTasks">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+
         </footer>
     </div>
 </template>
@@ -23,7 +25,7 @@
 import { defineComponent } from "vue";
 export default defineComponent({
     name: 'SideBar',
-    emits: ['changeTheme'],
+    emits: ['changeTheme', 'clearTasks'],
     data() {
         return {
             darkMode: true,
@@ -41,7 +43,10 @@ export default defineComponent({
         changeTheme() {
             this.darkMode =  !this.darkMode;
             this.$emit('changeTheme', this.darkMode);
-        }
+        },
+        clearTasks() {
+            this.$emit('clearTasks');
+        },
     }
 });
 </script>
@@ -75,7 +80,7 @@ footer {
     border: none;
     padding: 0;
     cursor: pointer;
-    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
 }
 .trash i {
     font-size: 1.6rem;
