@@ -8,7 +8,11 @@
             </div>
         </header>
         <footer>
-            <button class="button" @click="changeTheme">
+            <button class="trash">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+
+            <button type="button" class="btn btn-outline-light" @click="changeTheme">
                 {{ textButton }}
             </button>
         </footer>
@@ -60,6 +64,22 @@ footer {
     width: 100%;
     height: 20vh;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.trash {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-bottom: 1.2rem;
+}
+.trash i {
+    font-size: 1.6rem;
+    color: red;
 }
 
 @media only screen and (max-width: 768px) {
